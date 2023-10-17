@@ -2,7 +2,33 @@
 
 ## No 1
 
+Diminta untuk membuat topologi sesuai pembagian. Di sini kami mendapatkan topologi nomor 6.<br />
+Kita bisa desain topologinya lalu edit config pada Pandudewanata sebagai berikut.
+```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 192.205.1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 192.205.2.1
+	netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+	address 192.205.3.1
+	netmask 255.255.255.0
+```
+
+Dan edit config pada switch-switch lain untuk menyesuaikan dengan config Pandudewanata.
+
 ## No 2
+
+
 
 ## No 3
 
