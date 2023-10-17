@@ -1,4 +1,4 @@
-# Jarkom-Modul-3-D28-2023
+![image](https://github.com/lodaogos/Jarkom-Modul-3-D28-2023/assets/34641833/86553e92-b519-4511-8905-c47ce8b2ef67)# Jarkom-Modul-3-D28-2023
 
 ## No 1
 
@@ -28,13 +28,123 @@ Dan edit config pada switch-switch lain untuk menyesuaikan dengan config Pandude
 
 ## No 2
 
+Di sini kita diminta untuk membuat website utama pada node arjuna dengan akses ke arjuna.d28.com. Kita bisa mengikuti langkah-langkah di modul.
 
+Pertama kita bisa set sesuai konfigurasi dari zone arjuna.
+```
+echo 'zone "arjuna.D28.com" {
+    type master;
+    file "/etc/bind/arjuna/arjuna.D28.com";  # Update the file path as needed
+};' > /etc/bind/named.conf.local
+
+mkdir /etc/bind/arjuna
+
+echo '$TTL 604800
+@ IN SOA arjuna.D28.com. root.arjuna.D28.com. (
+    2022100601 ; Serial
+    604800 ; Refresh
+    86400 ; Retry
+    2419200 ; Expire
+    604800 ) ; Negative Cache TTL
+;
+@ IN NS arjuna.D28.com.
+@ IN A 192.205.1.4 ; IP Yudhistira
+@ IN AAAA ::1' > /etc/bind/arjuna/arjuna.D28.com
+```
+Lalu, pada 3 server ubah dengan nameserver dengan script
+```
+echo ‘nameserver 192.205.1.4’ > /etc/resolv.conf
+```
+
+Lalu, bisa kita cek dengan ping arjuna.d28.com
+
+![2](https://github.com/lodaogos/Jarkom-Modul-3-D28-2023/assets/34641833/2d850871-8cff-4a66-8ea8-a87d7e78f35c)
 
 ## No 3
 
+Sama seperti nomor 2. Di sini kita bisa add zone di DNS.
+
+```
+echo 'zone "abimanyu.D28.com" {
+    type master;
+    file "/etc/bind/abimanyu/abimanyu.D28.com";  # Update the file path as needed
+};' >> /etc/bind/named.conf.local
+
+mkdir /etc/bind/abimanyu
+
+echo '$TTL 604800
+@ IN SOA abimanyu.D28.com. root.abimanyu.D28.com. (
+    2022100601 ; Serial
+    604800 ; Refresh
+    86400 ; Retry
+    2419200 ; Expire
+    604800 ) ; Negative Cache TTL
+;
+@ IN NS abimanyu.D28.com.
+@ IN A 192.205.1.4 ; IP Yudhistira
+@ IN AAAA ::1' > /etc/bind/abimanyu/abimanyu.D28.com
+
+service bind9 restart
+```
+
+Lalu, bisa kita cek dengan ping abimanyu.d28.com
+
+![3](https://github.com/lodaogos/Jarkom-Modul-3-D28-2023/assets/34641833/0d0cce31-f953-44a6-97e3-75e62105da3b)
+
+
 ## No 4
 
+Di sini kita bisa membuat subdomain dengan mengikuti langkah-langkah pada modul. Bisa kita tambahkan parikesit untuk dijadikan sebagai subdomain lalu restart bind.
+
+```
+echo '$TTL 604800
+@ IN SOA abimanyu.D28.com. root.abimanyu.D28.com. (
+    2022100601 ; Serial
+    604800 ; Refresh
+    86400 ; Retry
+    2419200 ; Expire
+    604800 ) ; Negative Cache TTL
+;
+@ IN NS abimanyu.D28.com.
+@ IN A 192.205.1.4 ; IP Yudhistira
+www IN CNAME abimanyu.D28.com.
+parikesit IN A 192.205.3.3 ; IP Abimanyu
+@ IN AAAA ::1' > /etc/bind/abimanyu/abimanyu.D28.com
+```
+
+![4](https://github.com/lodaogos/Jarkom-Modul-3-D28-2023/assets/34641833/4a6a3940-7697-4c01-bb70-2f9564e62ada)
+
+
 ## No 5
+
+Pada soal ini kita bisa membuat reverse domain dengan cara menambahkan reverse dari 3 byte awal dari IP yang ingin dilakukan Reverse DNS.
+Cukup ikuti langkah pada modul lalu restart bind.
+
+```
+echo ‘\n’ >> /etc/bind/named.conf.local
+echo ‘zone "1.205.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/abimanyu/1.205.192.in-addr.arpa";
+};’ >> /etc/bind/named.conf.local
+
+echo ‘ $TTL	604800
+@	IN	SOA	abimanyu.D28.com.	root.abimanyu.D28.com. (
+			2022100601	; Serial
+			604800		; Refresh
+			86400		; Retry
+			2419200		; Expire
+			604800 )	; Negative Cache TTL
+;
+1.205.192.in-addr.arpa.	IN	NS	abimanyu.D28.com.
+4			IN	PTR	abimanyu.D28.com. ; Byte ke-4 Abimanyu
+‘ >> etc/bind/abimanyu/1.205.192.in-addr.arpa
+
+```
+
+Setelah itu bisa kita tes dengan `host -t PTR 192.205.1.4`.
+
+![5](https://github.com/lodaogos/Jarkom-Modul-3-D28-2023/assets/34641833/976d0020-92b0-4c88-8be6-d846ac08afa8)
+
 
 ## No 6
 
