@@ -41,6 +41,9 @@ echo 'nameserver 192.205.1.5' >> /etc/resolv.conf
 
 Untuk cek kita bisa lakukan `service bind9 stop` pada yudhistira, kemudian ping lewat salah satu web server untuk ngecek apakah masih bisa terakses. Jika bisa berarti werkudara berhasil di set sebagai dns slave.
 
+![no6_1](/src/No_6/1.jpg)
+
+![no6_2](/src/No_6/2.jpg)
 
 
 
@@ -94,6 +97,9 @@ echo 'zone "baratayuda.abimanyu.D28.com" {
 
 Hasil ping : 
 
+![no7_1](/src/No_7/1.jpg)
+
+![no7_2](/src/No_7/2.jpg)
 
 
 ## No 8
@@ -131,7 +137,7 @@ www IN CNAME rjp.baratayuda.abimanyu.D28.com.' > /etc/bind/delegasi/rjp.baratayu
 
 Hasil ping : 
 
-
+![no8](/src/No_8/1.jpg)
 
 
 ## No 9
@@ -203,7 +209,15 @@ ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
 
 Hasil lynx ke arjuna.d28.com : 
 
+![no10_1](/src/No_10/1.jpg)
+
+![no10_2](/src/No_10/2.jpg)
+
+![no10_3](/src/No_10/3.jpg)
+
 Disarankan untuk setiap worker dijalankan ini di script untuk menghindari hal-hal yang tidak diinginkan :
+
+![no10_4](/src/No_10/4.jpg)
 
 
 ## No 11
@@ -216,9 +230,13 @@ wget --no-check-certificate "https://drive.google.com/u/0/uc?id=1a4V23hwK9S7hQED
 
 Setelah itu kita tinggal jalankan sesuai modul seperti script dibawah ini dengan sedikit modifikasi dimana kita mengunzip file yang di download tadi.
 
+![no11_1](/src/No_11/1.jpg)
+
+![no11_2](/src/No_11/2.jpg)
 
 Hasil lynx ke www.abimanyu.d28.com : 
 
+![no11_3](/src/No_11/3.jpg)
 
 
 ## No 12
@@ -246,6 +264,9 @@ Kemudian ubah config menjadi seperti ini
 ```
 
 Hasil lynx www.abimanyu.d28.com/home
+
+
+![no12](/src/No_12/1.jpg)
 
 
 ## No 13
@@ -287,7 +308,7 @@ a2ensite parikesit
 
 Hasil lynx : 
 
-
+![no13](/src/No_13/1.jpg)
 
 
 ## No 14
@@ -308,8 +329,9 @@ Kemudian kita perlu buat direktori secret dengan command `mkdir /var/www/parikes
 
 Hasil lynx parikesit.abimanyu.d28.com/secret :
 
+![no14_1](/src/No_14/1.jpg)
 
-
+![no14_2](/src/No_14/2.jpg)
 
 ## No 15
 
@@ -322,6 +344,10 @@ sed -i 's/Tikus jangan masuk!/403 Forbidden/g' /var/www/parikesit.abimanyu.d28.c
 ```
 
 Hasil perubahan :
+
+![no15_1](/src/No_15/1.jpg)
+
+![no15_2](/src/No_15/2.jpg)
 
 ## No 16
 
@@ -339,6 +365,7 @@ Alias “/js” “/var/www/parikesit.abimanyu.d28.com/public/js”
 
 Hasil lynx : 
 
+![no16](/src/No_16/1.jpg)
 
 
 ## No 17
@@ -383,6 +410,7 @@ a2ensite baratayuda.conf
 
 Hasil lynx : 
 
+![no17](/src/No_17/1.jpg)
 
 Karena saya sudah mengerjakan no 18, diperlukan username dan password agar bisa mengaksesnya.
 
@@ -405,7 +433,7 @@ Kemudian di file config kita perlu set sebagai berikut.
 
 Hasil lynx : 
 
-
+![no18](/src/No_18/1.jpg)
 
 
 ## No 19
@@ -419,6 +447,11 @@ echo '
     Redirect permanent / http://www.abimanyu.d28.com/
 </VirtualHost>' >> /etc/apache2/sites-available/000-default.conf
 ```
+
+Hasil lynx 192.205.3.3 : 
+
+![no19](/src/No_19/1.jpg)
+
 
 ## No 20
 
