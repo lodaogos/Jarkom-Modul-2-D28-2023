@@ -1,6 +1,8 @@
-Anggota Kelompok D28 :
-5025211113 Revanantyo Dwigantara
-5025211082 Charles
+### Anggota Kelompok D28 :
+
+### 5025211113 Revanantyo Dwigantara
+
+### 5025211082 Charles
 
 ## No 1
 
