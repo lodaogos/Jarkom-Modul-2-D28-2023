@@ -1,3 +1,7 @@
+Anggota Kelompok D28 :
+5025211113 Revanantyo Dwigantara
+5025211082 Charles
+
 ## No 1
 
 Diminta untuk membuat topologi sesuai pembagian. Di sini kami mendapatkan topologi nomor 6.<br />
