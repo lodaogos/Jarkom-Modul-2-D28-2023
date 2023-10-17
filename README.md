@@ -1,5 +1,3 @@
-![image](https://github.com/lodaogos/Jarkom-Modul-3-D28-2023/assets/34641833/86553e92-b519-4511-8905-c47ce8b2ef67)# Jarkom-Modul-3-D28-2023
-
 ## No 1
 
 Diminta untuk membuat topologi sesuai pembagian. Di sini kami mendapatkan topologi nomor 6.<br />
